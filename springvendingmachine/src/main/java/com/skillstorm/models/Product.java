@@ -1,13 +1,21 @@
 package com.skillstorm.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import java.util.Objects;
+
+
+
+
+import com.skillstorm.dtos.ProductDto;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 
 /**
  * Product Entity 
@@ -32,7 +40,7 @@ public class Product {
 	private Category category;
 
 	public Product() {
-		
+		super();
 	}
 	
 	public Product(int productId, String productName, double price, Category category) {
@@ -43,6 +51,15 @@ public class Product {
 		this.category = category;
 	}
 
+	public Product(ProductDto productDto) {
+		
+		this.productId=productDto.getProductId();
+		this.productName=productDto.getProductName();
+		this.price=productDto.getPrice();
+		this.category=productDto.getCategory();
+	}
+	
+	
 	public int getProductId() {
 		return productId;
 	}
@@ -74,7 +91,40 @@ public class Product {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
+
+	/**
+	 * Method that convert the entity into Product DTO
+	 * */
+	public ProductDto toDto() {
+		return new ProductDto(productId,productName,price,category);
+	}
 	
+	@Override
+	public int hashCode() {
+		return Objects.hash(category, price, productId, productName);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Product other = (Product) obj;
+		return Objects.equals(category, other.category)
+				&& Double.doubleToLongBits(price) == Double.doubleToLongBits(other.price)
+				&& productId == other.productId && Objects.equals(productName, other.productName);
+	}
+
+	@Override
+	public String toString() {
+		return "Product [productId=" + productId + ", productName=" + productName + ", price=" + price + ", category="
+				+ category + "]";
+	}
+
+
 	
 	
 

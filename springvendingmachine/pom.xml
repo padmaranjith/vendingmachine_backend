@@ -5,16 +5,16 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.0.6</version>
+		<version>2.7.10</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.skillstorm</groupId>
 	<artifactId>springvendingmachine</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>springvendingmachine</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Vending Machine Inventory Management Spring Boot</description>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>1.8</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -45,11 +45,12 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-javadoc-plugin -->
+	
+	<!--1. https://mvnrepository.com/artifact/org.modelmapper/modelmapper -->
 		<dependency>
-    		<groupId>org.apache.maven.plugins</groupId>
-  			<artifactId>maven-javadoc-plugin</artifactId>
-   			 <version>3.5.0</version>
+   			 <groupId>org.modelmapper</groupId>
+    			<artifactId>modelmapper</artifactId>
+    			<version>3.0.0</version>
 		</dependency>
 
 	</dependencies>
