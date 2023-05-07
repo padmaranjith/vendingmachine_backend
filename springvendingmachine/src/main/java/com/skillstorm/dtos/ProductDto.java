@@ -2,55 +2,75 @@ package com.skillstorm.dtos;
 
 import java.util.Objects;
 
-import com.skillstorm.models.Category;
-
+/**Product DTO Class use the Product Entity data to send and receive 
+ * */
 public class ProductDto {
 
 	
 	private int productId;
 	private String productName;
 	private double price;
-	private Category category;
-	
+	private int categoryId;
 
 	public ProductDto() {
 		
 	}
-	public ProductDto(int productId, String productName, double price, Category category) {
+
+	public ProductDto(int productId, String productName, double price, int categoryId) {
 		super();
 		this.productId = productId;
 		this.productName = productName;
 		this.price = price;
-		this.category = category;
+		this.categoryId = categoryId;
 	}
+
+
 	public int getProductId() {
 		return productId;
 	}
+
+
 	public void setProductId(int productId) {
 		this.productId = productId;
 	}
+
+
 	public String getProductName() {
 		return productName;
 	}
+
+
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
+
+
 	public double getPrice() {
 		return price;
 	}
+
+
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	public Category getCategory() {
-		return category;
+
+
+	public int getCategoryId() {
+		return categoryId;
 	}
-	public void setCategory(Category category) {
-		this.category = category;
+
+
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
 	}
+
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(productId);
+		return Objects.hash(categoryId, price, productId, productName);
 	}
+
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -60,15 +80,19 @@ public class ProductDto {
 		if (getClass() != obj.getClass())
 			return false;
 		ProductDto other = (ProductDto) obj;
-		return productId == other.productId;
+		return categoryId == other.categoryId && Double.doubleToLongBits(price) == Double.doubleToLongBits(other.price)
+				&& productId == other.productId && Objects.equals(productName, other.productName);
 	}
+
+
 	@Override
 	public String toString() {
 		return "ProductDto [productId=" + productId + ", productName=" + productName + ", price=" + price
-				+ ", category=" + category + "]";
+				+ ", categoryId=" + categoryId + "]";
 	}
 
-	
+
+
 	
 	
 }

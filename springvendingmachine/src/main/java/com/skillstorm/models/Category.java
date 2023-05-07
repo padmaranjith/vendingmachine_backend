@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.skillstorm.dtos.CategoryDto;
+
 
 @Entity
 @Table(name = "categories")
@@ -47,6 +49,9 @@ public class Category {
 		this.categoryName = categoryName;
 	}
 
+	public CategoryDto toCategoryDto() {
+		return new CategoryDto(categoryId, categoryName);
+	}
 	@Override
 	public int hashCode() {
 		return Objects.hash(categoryId, categoryName);

@@ -51,15 +51,6 @@ public class Product {
 		this.category = category;
 	}
 
-	public Product(ProductDto productDto) {
-		
-		this.productId=productDto.getProductId();
-		this.productName=productDto.getProductName();
-		this.price=productDto.getPrice();
-		this.category=productDto.getCategory();
-	}
-	
-	
 	public int getProductId() {
 		return productId;
 	}
@@ -96,7 +87,7 @@ public class Product {
 	 * Method that convert the entity into Product DTO
 	 * */
 	public ProductDto toDto() {
-		return new ProductDto(productId,productName,price,category);
+		return new ProductDto(productId,productName,price,category.getCategoryId());
 	}
 	
 	@Override
