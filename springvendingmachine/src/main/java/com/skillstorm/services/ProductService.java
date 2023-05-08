@@ -73,7 +73,6 @@ public class ProductService {
 		System.out.println("Adding product after getting cate..."+productData.getCategoryId());
 		product.setCategory(category);
 		System.out.println("product values "+product);
-		//return productRepository.save(product).toDto()
 		return productRepository.save(product).toDto();
 	}
 	
@@ -107,10 +106,9 @@ public class ProductService {
 				.findById(productData.getCategoryId())
 				.orElseThrow(()->new RuntimeException("Category not found"));
 		
-		System.out.println("Updating product after getting cate..."+productData.getCategoryId());
+		System.out.println("Updating product after getting category..."+productData.getCategoryId());
 		product.setCategory(category);
 		System.out.println("product values "+product);
-		//return productRepository.save(product).toDto()
 		return productRepository.save(product).toDto();
 
 	}

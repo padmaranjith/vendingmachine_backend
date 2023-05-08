@@ -1,5 +1,6 @@
 package com.skillstorm.dtos;
 
+import java.util.Date;
 import java.util.Objects;
 
 public class InventoryDto {
@@ -8,18 +9,25 @@ public class InventoryDto {
 	private int availableCapacity;
 	private int maxCapacity;
 	private int productId;
+	private Date lastRefillDate;
 	
 	public InventoryDto() {
 		
 	}
-	public InventoryDto(int inventoryId, int machineId, int availableCapacity, int maxCapacity, int productId) {
+	
+	public InventoryDto(int inventoryId, int machineId, int availableCapacity, int maxCapacity, int productId,
+			Date lastRefillDate) {
 		super();
 		this.inventoryId = inventoryId;
 		this.machineId = machineId;
 		this.availableCapacity = availableCapacity;
 		this.maxCapacity = maxCapacity;
 		this.productId = productId;
+		this.lastRefillDate = lastRefillDate;
 	}
+
+
+
 	public int getInventoryId() {
 		return inventoryId;
 	}
@@ -50,6 +58,20 @@ public class InventoryDto {
 	public void setProductId(int productId) {
 		this.productId = productId;
 	}
+	
+	
+	public Date getLastRefillDate() {
+		return lastRefillDate;
+	}
+
+
+
+	public void setLastRefillDate(Date lastRefillDate) {
+		this.lastRefillDate = lastRefillDate;
+	}
+
+
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(inventoryId);

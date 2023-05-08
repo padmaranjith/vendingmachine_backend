@@ -40,16 +40,20 @@ public class Inventory {
 		
 	}
 
-	public Inventory(int inventoryId, int machineId,  int availableCapacity, int maxCapacity,
+
+
+	public Inventory(int inventoryId, int machineId, int availableCapacity, int maxCapacity, Date lastRefillDate,
 			Product product) {
 		super();
 		this.inventoryId = inventoryId;
 		this.machineId = machineId;
-		
 		this.availableCapacity = availableCapacity;
 		this.maxCapacity = maxCapacity;
+		this.lastRefillDate = lastRefillDate;
 		this.product = product;
 	}
+
+
 
 	public int getInventoryId() {
 		return inventoryId;
@@ -124,7 +128,7 @@ public class Inventory {
 	 * Method that convert the entity into Product DTO
 	 * */
 	public InventoryDto toDto() {
-		return new InventoryDto(inventoryId, machineId, availableCapacity, maxCapacity, product.getProductId());
+		return new InventoryDto(inventoryId, machineId, availableCapacity, maxCapacity, product.getProductId(),lastRefillDate);
 	}
 
 	@Override
