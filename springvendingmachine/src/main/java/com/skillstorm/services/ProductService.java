@@ -15,7 +15,12 @@ import com.skillstorm.models.Product;
 import com.skillstorm.repositories.ICategoryRepository;
 import com.skillstorm.repositories.IProductRepository;
 
-
+/**
+ * 
+ * @author Padma Ranjith
+ * Product Service returns CRUD operation related to the Products
+ *
+ */
 @Service
 @Transactional
 public class ProductService {
@@ -39,24 +44,33 @@ public class ProductService {
 //				.collect(Collectors.toList());
 //	}
 	
-//	public List<ProductDto> findAllProducts(){
-//		return productRepository.findAll()
-//			.stream()
-//			.map(p->p.toDto())
-//			.toList();
-//		}
-	
+	/**
+	 * @returns List all Products
+	 */
+
+
 	public List<Product> findAllProducts(){
 		return productRepository.findAll();
 			
 		}
 	
+	/**
+	 * 
+	 * @param productId
+	 * @return Find the product by Id
+	 */
 	public ProductDto findProductById(int productId) {
 		
 		return productRepository
 				.findById(productId)
 				.orElseThrow(()->new RuntimeException("Product with productId " + productId+" not found")).toDto();
 	}
+	
+	/**
+	 * 
+	 * @param productData
+	 * @return created product dto object
+	 */
 	
 	public ProductDto createProduct(ProductDto productData) {
 		
@@ -87,12 +101,21 @@ public class ProductService {
 		return productDto;
 		
 	}
-	
+	/**
+	 * 
+	 * @param id
+	 * Delete the product by id
+	 */
 	public void deleteProductById(int id) {
 		productRepository.deleteById(id);
 	}
 
 
+	/**
+	 * 
+	 * @param productData
+	 * @return Returns updated product data
+	 */
 	public ProductDto updateProduct(ProductDto productData) {
 		
 		Product product= new Product();

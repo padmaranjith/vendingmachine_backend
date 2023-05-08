@@ -15,6 +15,13 @@ import com.skillstorm.models.Product;
 import com.skillstorm.repositories.IInventoryRepository;
 import com.skillstorm.repositories.IProductRepository;
 
+
+/***
+ * 
+ * @author Padma Ranjith
+ * Inventory Service returns CRUD operation related to the Inventory 
+ *
+ */
 @Service
 @Transactional
 public class InventoryService {
@@ -25,12 +32,21 @@ public class InventoryService {
 	@Autowired
 	private IProductRepository productRepository;
 	
+	/**
+	 * 
+	 * @return List of all Inventories
+	 */
+	
 	public List<Inventory> getAllInventories(){
 		return inventoryRepository
 				.findAll()
 				;
 		}
-	
+	/**
+	 * 
+	 * @param inventoryData
+	 * @return saved Inventory data
+	 */
 	public InventoryDto createInventory(InventoryDto inventoryData) {
 		Inventory inventory= new Inventory();
 		inventory.setMachineId(1);
@@ -49,6 +65,11 @@ public class InventoryService {
 		return inventoryRepository.save(inventory).toDto();
 	}
 	
+	/**
+	 * 
+	 * @param inventoryData
+	 * @return updated inventory data
+	 */
 	
 	public InventoryDto updateInventory(InventoryDto inventoryData) {
 		
@@ -74,13 +95,12 @@ public class InventoryService {
 		else {
 			throw new RuntimeException("Inventory not found to update");
 		}
-		
-		
-		
-		
-		
 	}
 	
+	/**
+	 * 
+	 * @param id Delete the inventory by Id
+	 */
 	public void deleteInventoryById(@PathVariable int id) {
         inventoryRepository.deleteById(id);
 }

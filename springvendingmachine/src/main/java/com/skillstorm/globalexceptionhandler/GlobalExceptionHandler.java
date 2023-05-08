@@ -11,6 +11,12 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+/**
+ * 
+ * @author Padma Ranjith
+ * Handles the exception and send custom designed error message to user
+ *
+ */
 @ControllerAdvice
 public class GlobalExceptionHandler {
 	@ExceptionHandler(value = {Exception.class})
